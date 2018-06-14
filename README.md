@@ -32,3 +32,7 @@ BenchmarkReadAtomic-8
 BenchmarkReadLock-8
 20000000	        58.9 ns/op
 ```
+
+# References
+* http://wysocki.in/golang-concurrency-data-races/
+* https://software.intel.com/en-us/blogs/2013/01/06/benign-data-races-what-could-possibly-go-wrong
