@@ -14,6 +14,9 @@ BenchmarkIncrAtomic-8
 300000000	         5.96 ns/op
 
 BenchmarkIncrLock-8
+20000000	        63.2 ns/op
+
+BenchmarkIncrLockWithoutDefer-8
 100000000	        32.0 ns/op
 ```
 
@@ -31,6 +34,9 @@ BenchmarkReadAtomic-8
 
 BenchmarkReadLock-8
 20000000	        58.9 ns/op
+
+BenchmarkReadLockWithoutDefer-8
+100000000	        18.2 ns/op
 ```
 
 # References

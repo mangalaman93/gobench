@@ -20,6 +20,12 @@ func (c *Counter) IncrAtomic() {
 
 func (c *Counter) IncrLock() {
 	c.Lock.Lock()
+	defer c.Lock.Unlock()
+	c.Value = c.Value + 1
+}
+
+func (c *Counter) IncrLockWithoutDefer() {
+	c.Lock.Lock()
 	c.Value = c.Value + 1
 	c.Lock.Unlock()
 }
@@ -36,4 +42,11 @@ func (c *Counter) ReadLock() int64 {
 	c.Lock.RLock()
 	defer c.Lock.RUnlock()
 	return c.Value
+}
+
+func (c *Counter) ReadLockWithoutDefer() int64 {
+	c.Lock.RLock()
+	v := c.Value
+	c.Lock.RUnlock()
+	return v
 }
