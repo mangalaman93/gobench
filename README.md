@@ -16,3 +16,19 @@ BenchmarkIncrAtomic-8
 BenchmarkIncrLock-8
 100000000	        32.0 ns/op
 ```
+
+# Single Threaded Read Benchmark
+```
+goos: darwin
+goarch: amd64
+pkg: github.com/mangalaman93/gobench
+
+BenchmarkRead-8
+2000000000	         0.41 ns/op
+
+BenchmarkReadAtomic-8
+2000000000	         0.42 ns/op
+
+BenchmarkReadLock-8
+20000000	        58.9 ns/op
+```

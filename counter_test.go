@@ -31,3 +31,33 @@ func BenchmarkIncrLock(b *testing.B) {
 
 	fmt.Println("final value of counter", counter.Value)
 }
+
+func BenchmarkRead(b *testing.B) {
+	counter := &Counter{}
+	var value int64
+	for n := 0; n < b.N; n++ {
+		value += counter.Read()
+	}
+
+	fmt.Println("final value of temp counter", value)
+}
+
+func BenchmarkReadAtomic(b *testing.B) {
+	counter := &Counter{}
+	var value int64
+	for n := 0; n < b.N; n++ {
+		value += counter.ReadAtomic()
+	}
+
+	fmt.Println("final value of temp counter", value)
+}
+
+func BenchmarkReadLock(b *testing.B) {
+	counter := &Counter{}
+	var value int64
+	for n := 0; n < b.N; n++ {
+		value += counter.ReadLock()
+	}
+
+	fmt.Println("final value of temp counter", value)
+}

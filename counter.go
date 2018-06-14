@@ -23,3 +23,17 @@ func (c *Counter) IncrLock() {
 	c.Value = c.Value + 1
 	c.Lock.Unlock()
 }
+
+func (c *Counter) Read() int64 {
+	return c.Value
+}
+
+func (c *Counter) ReadAtomic() int64 {
+	return atomic.LoadInt64(&c.Value)
+}
+
+func (c *Counter) ReadLock() int64 {
+	c.Lock.RLock()
+	defer c.Lock.RUnlock()
+	return c.Value
+}
